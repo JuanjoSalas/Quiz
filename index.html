@@ -10,14 +10,22 @@
 <body>
     <nav>
         <span id="homeNav">Home</span>
-        <span id="questionNav">Question</span>
+        <span id="quizNav">Question</span>
         <span id="resultsNav">Results</span>
     </nav>
     <div id="home">
         <h1>Home</h1>
     </div>
-    <div id="question" class="hide">
+    <div id="quiz" class="hide">
         <h2>Quiz</h2>
+        <div id="question-container" class="hide">
+            <div id="question"></div>
+            <div id="answer-buttons"></div>
+        </div>
+        <div class="controls">
+            <button id="start-btn">Start</button>
+            <button id="next-btn" class="hide">Next</button>
+        </div>
     </div>
     <div id="results" class="hide">
         <h2>Results</h2>
