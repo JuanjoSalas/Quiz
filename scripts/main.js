@@ -31,10 +31,25 @@ const showResults =()=>{
 }
 
 //axios
-axios.get("https://the-trivia-api.com/v2/questions/")
-.then((res) => console.log(res.data[0]))
-//.then((res) => console.log(res.data[0].question))
-.catch((err) => console.error(err));
+
+let questions = [
+    {
+        question: "¿Cuantos años tienes?",
+        answers: [
+            {text:"32", correct: true },
+            {text:"22", correct: false },
+            {text:"12", correct: false },
+            {text:"42", correct: false },
+        ]
+    }
+];
+//let question;
+//let answer;
+
+/*axios.get("https://the-trivia-api.com/v2/questions/")
+//.then((res) => console.log(res.data[0]))
+.then((res) => question = res.data[0].question)
+.catch((err) => console.error(err));*/
 
 let currentQuestionIndex;
 
@@ -42,9 +57,33 @@ const startGame =()=>{
     startButton.classList.add("hide")
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove("hide")
+    setNextQuestion();
 }
 
+const showQuestion =(question)=>{
+questionElement.innerText = question.question;
+question.answers.forEach((answer) => {
+    const button = document.createElement("button")
+    button.innerText = answer.text;
 
+    if (answer.correct) {
+        button.dataset.correct = true;
+    }
+    answerButtonsElement.appendChild(button);
+});
+}
+
+const setNextQuestion =()=>{
+    showQuestion(questions[currentQuestionIndex]);
+}
+
+const setStatusClass =(option)=>{
+    if (option.dataset.correct) {
+        option.classList.add("correct");
+    } else {
+        option.classList.add("wrong");
+    }
+}
 
 
 // Events
