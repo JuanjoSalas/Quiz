@@ -15,6 +15,7 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 // variables
 let questions = [];
+let correctAnswer = ""
 let currentQuestionIndex;
 
 // Fuctions
@@ -51,7 +52,8 @@ const loadQuestion = async ()=>{
     try {
         const result = await axios.get("https://thesimpsonsquoteapi.glitch.me/quotes?count=10")
         questions = (result.data);
-        console.log(result.data[0]);
+        //console.log(result.data[0]);
+        console.log(answer);
     } catch (error) {
         console.error(error);
     }
@@ -65,15 +67,25 @@ const startGame =()=>{
     setNextQuestion();
 }
 
-const showQuestion =(question)=>{
-    console.log(question);
-questionElement.innerHTML = 
-`<img src="${question.image}" alt=""></img>`
-question.answers.forEach((answer) => {
-    const button = document.createElement("button")
-    button.innerText = answer.text;
+/*let incorrectAnswer = questions
+console.log(incorrectAnswer);
+const incorrectAnswer =()=>{
+}*/
 
-    if (answer.correct) {
+const showQuestion =(question)=>{
+questionElement.innerHTML = 
+`<img src="${question.image}" alt=""></img>`;
+
+correctAnswer = question.character;
+const answers = questions.map(question=>question.character);
+//let optionsList = incorrectAnswer;
+//optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+console.log(answers);
+    answers.forEach((answer) => {
+    const button = document.createElement("button")
+    button.innerText = answer;
+
+    if (answer == correctAnswer) {
         button.dataset.correct = true;
     }
     button.addEventListener("click", selectAnswer);
