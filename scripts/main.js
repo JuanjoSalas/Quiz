@@ -1,4 +1,4 @@
-// Var
+// VariablesHtml
 // NavBar
 const homeNav = document.getElementById("homeNav");
 const quizNav = document.getElementById("quizNav");
@@ -13,8 +13,11 @@ const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
+// variables
+let questions = [];
+let currentQuestionIndex;
 
-// Funciones
+// Fuctions
 // Body
 const hideViews =()=>{
     homeDiv.classList.add("hide")
@@ -35,36 +38,25 @@ const showResults =()=>{
 }
 
 //axios
+//axios.get("https://opentdb.com/api.php?amount=10&category=32&difficulty=easy&type=multiple")
+//.then((res) => questions =  res.data.results)
+//.catch((err) => console.error(err));
 
-let questions = [
-    {
-        question: "¿Cuantos años tienes?",
-        answers: [
-            {text:"32", correct: true },
-            {text:"22", correct: false },
-            {text:"12", correct: false },
-            {text:"42", correct: false },
-        ]
-    },
-    {
-        question: "¿como te llamas?",
-        answers: [
-            {text:"juanjo", correct: true },
-            {text:"victor", correct: false },
-            {text:"alfonso", correct: false },
-            {text:"emilio", correct: false },
-        ]
+//axios.get("https://thesimpsonsquoteapi.glitch.me/quotes?count=10")
+//.then((res) => console.log(res.data))
+//.then((res) => questions = (res.data))
+//.catch((err) => console.error(err));
+
+const loadQuestion = async ()=>{
+    try {
+        const result = await axios.get("https://thesimpsonsquoteapi.glitch.me/quotes?count=10")
+        questions = (result.data);
+        console.log(result.data[0]);
+    } catch (error) {
+        console.error(error);
     }
-];
-//let question;
-//let answer;
-
-/*axios.get("https://the-trivia-api.com/v2/questions/")
-//.then((res) => console.log(res.data[0]))
-.then((res) => question = res.data[0].question)
-.catch((err) => console.error(err));*/
-
-let currentQuestionIndex;
+}
+loadQuestion()
 
 const startGame =()=>{
     startButton.classList.add("hide")
@@ -74,7 +66,9 @@ const startGame =()=>{
 }
 
 const showQuestion =(question)=>{
-questionElement.innerText = question.question;
+    console.log(question);
+questionElement.innerHTML = 
+`<img src="${question.image}" alt=""></img>`
 question.answers.forEach((answer) => {
     const button = document.createElement("button")
     button.innerText = answer.text;
