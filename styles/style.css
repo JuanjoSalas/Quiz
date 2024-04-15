@@ -1,11 +1,68 @@
-.hide {
-    display: none;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
+
+.hide {
+  display: none;
+}
+
+body{
+background-color: #af69cd;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 35px;
+}
+
+.border{
+  background-color: #4b0081;
+  margin: 35px 35pxpx 35px 35px;
+  padding: 25px;
+}
+
+.buttonHome{
+  background-color: #4b0081;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+.buttonQuiz{
+  background-color: #4b0081;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+.speaker{
+  background-color: #4b0081;
+  width: 150px;
+  height: 300px;
+  border-radius: 5%;
+  margin-top: 50px;
+}
+
+#home{
+  background-color: aliceblue;
+  width: 1200px;
+  height: 620px;
+  border-radius: 10%;
+  text-align: center;
+}
+
 .correct {
-    background-color: rgb(0, 255, 72);
+    background-color: yellow;
   }
   
   .wrong {
-    background-color: rgb(255, 0, 0);
+    background-color: gray;
   }
   

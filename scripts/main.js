@@ -43,7 +43,7 @@ const showResults = () => {
 const loadQuestion = async () => {
   try {
     const result = await axios.get(
-      "https://thesimpsonsquoteapi.glitch.me/quotes?count=10"
+      "https://thesimpsonsquoteapi.glitch.me/quotes?count=15"
     );
     questions = result.data;
     console.log(questions);
@@ -52,7 +52,7 @@ const loadQuestion = async () => {
     console.error(error);
   }
 };
-
+loadQuestion()
 
 /*const loadAnswer = async ()=>{
     const result = await axios.get("https://thesimpsonsquoteapi.glitch.me/quotes?count=10")
@@ -72,7 +72,7 @@ const startGame = () => {
   startButton.classList.add("hide");
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
-  loadQuestion();
+  //loadQuestion();
   setNextQuestion();
 };
 
@@ -80,9 +80,7 @@ const showQuestion = (question) => {
   currentQuestionIndex = currentQuestionIndex; //PREG A SOFI XQ NO FUCNIONA
   console.log(question);
   console.log(question[currentQuestionIndex].image);
-
   const answers = questions.map((question) => question.character);
-  //const answers = incorrectAnswer;
   let filteredanswers = answers.filter(
     (item, index) => answers.indexOf(item) == index
   );
@@ -94,7 +92,6 @@ const showQuestion = (question) => {
 
     if (arrbtnFiltered.length < 10) {
       loadQuestion()
-
     }
   questionElement.innerHTML = `<img src="${question[currentQuestionIndex].image}" alt=""></img>`;
   correctAnswer = question[currentQuestionIndex].character;

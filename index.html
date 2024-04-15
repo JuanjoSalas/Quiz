@@ -8,28 +8,44 @@
     <title>The Simpsons Quiz</title>
 </head>
 <body>
-    <nav>
+    <!--<nav>
         <span id="homeNav">Home</span>
         <span id="quizNav">Question</span>
         <span id="resultsNav">Results</span>
-    </nav>
-    <div id="home">
-        <h1>Home</h1>
-    </div>
-    <div id="quiz" class="hide">
-        <h2>Quiz</h2>
-        <div id="question-container" class="hide">
-            <div id="question"></div>
-            <div id="answer-buttons"></div>
+    </nav>-->
+    <div class="container">
+        <div class="border">
+            <div id="home">
+                <h1>Home</h1>
+            </div>
+            <div id="quiz" class="hide">
+                <h2>Quiz</h2>
+                <div id="question-container" class="hide">
+                    <div id="question"></div>
+                    <div id="answer-buttons"></div>
+                </div>
+                <div class="controls">
+                    <button id="start-btn">Start</button>
+                    <button id="next-btn" class="hide">Next</button>
+                </div>
+            </div>
+            <div id="results" class="hide">
+                <h2>Results</h2>
+            </div>
         </div>
-        <div class="controls">
-            <button id="start-btn">Start</button>
-            <button id="next-btn" class="hide">Next</button>
+        <div class="buttonBox">
+            <div class="buttonHome">
+                <span id="homeNav">Home</span>
+            </div>
+            <div class="buttonQuiz">
+                <span id="quizNav">Quiz</span>
+            </div>
+            <div class="speaker">
+                <span id="resultsNav">Results</span>
+            </div>
         </div>
     </div>
-    <div id="results" class="hide">
-        <h2>Results</h2>
-    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
