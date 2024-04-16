@@ -11,6 +11,7 @@ const resultsDiv = document.getElementById("results");
 const startButton = document.getElementById("start-btn");
 const startHardButton = document.getElementById("start-btn-hard");
 const nextButton = document.getElementById("next-btn");
+const nextButtonHard = document.getElementById("next-btn-hard");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
@@ -91,14 +92,14 @@ const startGame = () => {
   setNextQuestion();
 };
 
-/*const startGameHard = () => {
+const startGameHard = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   //loadQuestion();
   setNextQuestionHard();
-};*/
+};
 
 const showQuestion = (question) => {
   currentQuestionIndex = currentQuestionIndex; //PREG A SOFI XQ NO FUCNIONA
@@ -117,10 +118,7 @@ const showQuestion = (question) => {
     if (arrbtnFiltered.length < 10) {
       loadQuestion()
     }
-    /*if (arrbtnFiltered.length > 10) {
-      arrbtnFiltered.pop()
-      showQuestion(question)
-    }*/
+
   questionElement.innerHTML = `<img src="${question[currentQuestionIndex].image}" alt=""></img>`;
   correctAnswer = question[currentQuestionIndex].character;
   const arrSort = arrbtnFiltered.filter((answer,i) => {
@@ -155,8 +153,8 @@ button.innerText=answer
 };
 console.log(score);
 
-/*const showQuestionHard = (question) => {
-  currentQuestionIndex = currentQuestionIndex; //PREG A SOFI XQ NO FUCNIONA
+const showQuestionHard = (question) => {
+  currentQuestionIndex = currentQuestionIndex;
   console.log(question);
   console.log(question[currentQuestionIndex].quote);
   const answers = questions.map((question) => question.character);
@@ -172,32 +170,49 @@ console.log(score);
     if (arrbtnFiltered.length < 10) {
       loadQuestion()
     }
+
   questionElement.innerHTML = `<h5>${question[currentQuestionIndex].quote}</h5>`;
   correctAnswer = question[currentQuestionIndex].character;
-  arrbtnFiltered.sort()
-  arrbtnFiltered.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer;
+  const arrSort = arrbtnFiltered.filter((answer,i) => {
     if (answer == correctAnswer) {
-      //score.push(1);
+      return answer
+    }
+    if(i<4 && answer !== correctAnswer){
+      return answer
+    }
+  })
+  arrSort.sort()
+  arrSort.forEach((answer) => {
+    let button = document.createElement("button");
+button.innerText=answer
+   console.log(answer);
+    if (answer == correctAnswer) {
       score++;
       button.dataset.correct = true;
     }
     button.addEventListener("click", selectAnswer);
-    answerButtonsElement.appendChild(button);
+
+    /*button.addEventListener("click",() =>{
+      score++;
+
+      selectAnswer
+  }*/ 
+   
+      answerButtonsElement.appendChild(button);  
+    
   });
 };
-console.log(score);*/
+console.log(score);
 
 const setNextQuestion = () => {
   resetState();
   showQuestion(questions);
 };
 
-/*const setNextQuestionHard = () => {
+const setNextQuestionHard = () => {
   resetState();
   showQuestionHard(questions);
-};*/
+};
 
 const setStatusClass = (option) => {
   if (option.dataset.correct) {
@@ -211,7 +226,19 @@ const selectAnswer = () => {
   Array.from(answerButtonsElement.children).forEach((button) => {
     setStatusClass(button);
   });
-  //if (questions.length > currentQuestionIndex +1) {
+  if (10 > currentQuestionIndex + 1) {
+    nextButtonHard.classList.remove("hide");
+  } else {
+    showResults();
+    startButton.innerText = "restart";
+    startButton.classList.remove("hide");
+  }
+};
+
+const selectAnswerHard = () => {
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    setStatusClass(button);
+  });
   if (10 > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide");
   } else {
@@ -231,8 +258,12 @@ homeNav.addEventListener("click", showHome);
 quizNav.addEventListener("click", showQuiz);
 resultsNav.addEventListener("click", showResults);
 startButton.addEventListener("click", startGame);
-//startHardButton.addEventListener("click", startGameHard);
+startHardButton.addEventListener("click", startGameHard);
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
+});
+nextButtonHard.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestionHard();
 });
