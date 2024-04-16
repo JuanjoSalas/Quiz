@@ -19,6 +19,7 @@ let correctAnswer = "";
 let incorrectAnswer = [];
 let currentQuestionIndex;
 let arrbtn = [];
+let score = 0;
 // Fuctions
 // Body
 const hideViews = () => {
@@ -37,6 +38,20 @@ const showQuiz = () => {
 const showResults = () => {
   hideViews();
   resultsDiv.classList.remove("hide");
+  if (score < 2) {
+    console.log("Ralfh");
+  } if (score < 4) {
+    console.log("Nelson");
+  } if (score < 6) {
+    console.log("Bart");
+  } if (score < 8) {
+    console.log("Milhouse");
+  } if (score < 10) {
+    console.log("Martin");
+  } if (score = 10) {
+    console.log("Lisa");
+  }
+  console.log(score);
 };
 
 //axios
@@ -100,13 +115,15 @@ const showQuestion = (question) => {
     const button = document.createElement("button");
     button.innerText = answer;
     if (answer == correctAnswer) {
+      //score.push(1);
+      score++;
       button.dataset.correct = true;
     }
     button.addEventListener("click", selectAnswer);
     answerButtonsElement.appendChild(button);
   });
 };
-
+console.log(score);
 const setNextQuestion = () => {
   resetState();
   showQuestion(questions);
