@@ -13,7 +13,7 @@ body{
 background-color: #af69cd;
 }
 
-/*.container{
+.container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -74,7 +74,7 @@ background-color: #af69cd;
 .controlAudio{
   margin-top: 105px;
 }
-*/
+
 .correct {
     background-color: yellow;
   }

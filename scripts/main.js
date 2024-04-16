@@ -56,17 +56,13 @@ const showResults = () => {
   resultsDiv.classList.remove("hide");
   if (score < 2) {
     ralphDiv.classList.remove("hide");
-  }
-  if (score < 4) {
+  } else if (score < 4) {
     nelsonDiv.classList.remove("hide");
-  }
-  if (score < 6) {
+  } else if (score < 6) {
     bartDiv.classList.remove("hide");
-  }
-  if (score < 8) {
+  } else if (score < 8) {
     milhouseDiv.classList.remove("hide");
-  }
-  if (score < 10) {
+  } else if (score < 10) {
     martinDiv.classList.remove("hide");
   } else {
     lisaDiv.classList.remove("hide");
@@ -105,7 +101,8 @@ const startGameHard = () => {
 };
 
 const printScore = (score) => {
-  console.log(score);
+  scoreMarker.innerHTML = `<h5>Score: ${score}</h5>`;
+  let end = score;
 }
 
 const showQuestion = (question) => {
