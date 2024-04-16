@@ -15,6 +15,7 @@ const nextButtonHard = document.getElementById("next-btn-hard");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
+const scoreMarker = document.getElementById("score-marker");
 // Result
 const ralphDiv = document.getElementById("ralph");
 const nelsonDiv = document.getElementById("nelson");
@@ -53,15 +54,19 @@ const showQuiz = () => {
 const showResults = () => {
   hideViews();
   resultsDiv.classList.remove("hide");
-  if (score  < 2) {
+  if (score < 2) {
     ralphDiv.classList.remove("hide");
-  } if (score  < 4) {
+  }
+  if (score < 4) {
     nelsonDiv.classList.remove("hide");
-  } if (score < 6) {
+  }
+  if (score < 6) {
     bartDiv.classList.remove("hide");
-  } if (score < 8) {
+  }
+  if (score < 8) {
     milhouseDiv.classList.remove("hide");
-  } if (score < 10) {
+  }
+  if (score < 10) {
     martinDiv.classList.remove("hide");
   } else {
     lisaDiv.classList.remove("hide");
@@ -75,20 +80,19 @@ const loadQuestion = async () => {
       "https://thesimpsonsquoteapi.glitch.me/quotes?count=15"
     );
     questions = result.data;
-    console.log(questions);
     setNextQuestion();
   } catch (error) {
     console.error(error);
   }
 };
-loadQuestion()
+loadQuestion();
 
 const startGame = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
-  //loadQuestion();
+  scoreMarker.classList.remove("hide");
   setNextQuestion();
 };
 
@@ -97,112 +101,102 @@ const startGameHard = () => {
   startHardButton.classList.add("hide");
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
-  //loadQuestion();
   setNextQuestionHard();
 };
 
+const printScore = (score) => {
+  console.log(score);
+}
+
 const showQuestion = (question) => {
-  currentQuestionIndex = currentQuestionIndex; //PREG A SOFI XQ NO FUCNIONA
-  console.log(question);
-  console.log(question[currentQuestionIndex].image);
   const answers = questions.map((question) => question.character);
   let filteredanswers = answers.filter(
     (item, index) => answers.indexOf(item) == index
   );
-  filteredanswers.forEach((element) => {arrbtn.push(element);
+  filteredanswers.forEach((element) => {
+    arrbtn.push(element);
   });
-  let arrbtnFiltered = arrbtn.filter(    (item, index) => arrbtn.indexOf(item) == index
-  );    
-  console.log(arrbtnFiltered);
+  let arrbtnFiltered = arrbtn.filter(
+    (item, index) => arrbtn.indexOf(item) == index
+  );
 
-    if (arrbtnFiltered.length < 10) {
-      loadQuestion()
-    }
-
+  if (arrbtnFiltered.length < 10) {
+    loadQuestion();
+  }
   questionElement.innerHTML = `<img src="${question[currentQuestionIndex].image}" alt=""></img>`;
   correctAnswer = question[currentQuestionIndex].character;
-  const arrSort = arrbtnFiltered.filter((answer,i) => {
+  const arrSort = arrbtnFiltered.filter((answer, i) => {
     if (answer == correctAnswer) {
-      return answer
+      return answer;
     }
-    if(i<4 && answer !== correctAnswer){
-      return answer
+    if (i < 4 && answer !== correctAnswer) {
+      return answer;
     }
-  })
-  arrSort.sort()
+  });
+  arrSort.sort();
   arrSort.forEach((answer) => {
     let button = document.createElement("button");
-button.innerText=answer
-   console.log(answer);
+    button.innerText = answer;
     if (answer == correctAnswer) {
-      //score.push(1);
-      score++;
       button.dataset.correct = true;
     }
-    button.addEventListener("click", selectAnswer);
+    //button.addEventListener("click", selectAnswer);
 
-    /*button.addEventListener("click",() =>{
-      score++;
+    button.addEventListener("click", () => {
+      if (button.dataset.correct === "true") {
+        score++;
+        printScore(score);
+      }
 
-      selectAnswer
-  }*/ 
-   
-      answerButtonsElement.appendChild(button);  
+      console.log("button", button);
+      console.log("score", score);
+
+      selectAnswer();
+    });
     
+    answerButtonsElement.appendChild(button);
   });
 };
-console.log(score);
 
 const showQuestionHard = (question) => {
   currentQuestionIndex = currentQuestionIndex;
-  console.log(question);
-  console.log(question[currentQuestionIndex].quote);
   const answers = questions.map((question) => question.character);
   let filteredanswers = answers.filter(
     (item, index) => answers.indexOf(item) == index
   );
-  filteredanswers.forEach((element) => {arrbtn.push(element);
+  filteredanswers.forEach((element) => {
+    arrbtn.push(element);
   });
-  let arrbtnFiltered = arrbtn.filter(    (item, index) => arrbtn.indexOf(item) == index
-  );    
-  console.log(arrbtnFiltered);
+  let arrbtnFiltered = arrbtn.filter(
+    (item, index) => arrbtn.indexOf(item) == index
+  );
 
-    if (arrbtnFiltered.length < 10) {
-      loadQuestion()
-    }
+  if (arrbtnFiltered.length < 10) {
+    loadQuestion();
+  }
 
   questionElement.innerHTML = `<h5>${question[currentQuestionIndex].quote}</h5>`;
   correctAnswer = question[currentQuestionIndex].character;
-  const arrSort = arrbtnFiltered.filter((answer,i) => {
+  const arrSort = arrbtnFiltered.filter((answer, i) => {
     if (answer == correctAnswer) {
-      return answer
+      return answer;
     }
-    if(i<4 && answer !== correctAnswer){
-      return answer
+    if (i < 4 && answer !== correctAnswer) {
+      return answer;
     }
-  })
-  arrSort.sort()
+  });
+  arrSort.sort();
   arrSort.forEach((answer) => {
     let button = document.createElement("button");
-button.innerText=answer
-   console.log(answer);
+    button.innerText = answer;
     if (answer == correctAnswer) {
-      score++;
       button.dataset.correct = true;
     }
-    button.addEventListener("click", selectAnswer);
+    button.addEventListener("click", selectAnswerHard);
 
-    /*button.addEventListener("click",() =>{
-      score++;
-
-      selectAnswer
-  }*/ 
-   
-      answerButtonsElement.appendChild(button);  
-    
+    answerButtonsElement.appendChild(button);
   });
 };
-console.log(score);
 
 const setNextQuestion = () => {
   resetState();
@@ -227,10 +221,11 @@ const selectAnswer = () => {
     setStatusClass(button);
   });
   if (10 > currentQuestionIndex + 1) {
-    nextButtonHard.classList.remove("hide");
+    nextButton.classList.remove("hide");
   } else {
     showResults();
     startButton.innerText = "restart";
+    startHardButton.classList.remove("hide");
     startButton.classList.remove("hide");
   }
 };
@@ -240,11 +235,12 @@ const selectAnswerHard = () => {
     setStatusClass(button);
   });
   if (10 > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hide");
+    nextButtonHard.classList.remove("hide");
   } else {
     showResults();
-    startButton.innerText = "restart";
+    startHardButton.innerText = "restart";
     startButton.classList.remove("hide");
+    startHardButton.classList.remove("hide");
   }
 };
 

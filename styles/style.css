@@ -8,12 +8,12 @@
 .hide {
   display: none;
 }
-/*
+
 body{
 background-color: #af69cd;
 }
 
-.container{
+/*.container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
