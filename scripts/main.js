@@ -23,6 +23,12 @@ const bartDiv = document.getElementById("bart");
 const milhouseDiv = document.getElementById("milhouse");
 const martinDiv = document.getElementById("martin");
 const lisaDiv = document.getElementById("lisa");
+const cletusDiv = document.getElementById("cletus");
+const barneyDiv = document.getElementById("barney");
+const homerDiv = document.getElementById("homer");
+const lennyDiv = document.getElementById("lenny");
+const margeDiv = document.getElementById("marge");
+const frinkDiv = document.getElementById("frink");
 // variables
 let questions = [];
 let correctAnswer = "";
@@ -41,6 +47,12 @@ const hideViews = () => {
   milhouseDiv.classList.add("hide");
   martinDiv.classList.add("hide");
   lisaDiv.classList.add("hide");
+  cletusDiv.classList.add("hide");
+  barneyDiv.classList.add("hide");
+  homerDiv.classList.add("hide");
+  lennyDiv.classList.add("hide");
+  margeDiv.classList.add("hide");
+  frinkDiv.classList.add("hide");
 };
 const showHome = () => {
   hideViews();
@@ -71,18 +83,18 @@ const showResults = () => {
 const showResultsHard = () => {
   hideViews();
   resultsDiv.classList.remove("hide");
-  if (score < 3) {
-    ralphDiv.classList.remove("hide");
-  } else if (score < 7) {
-    nelsonDiv.classList.remove("hide");
-  } else if (score < 11) {
-    bartDiv.classList.remove("hide");
-  } else if (score < 15) {
-    milhouseDiv.classList.remove("hide");
-  } else if (score < 18) {
-    martinDiv.classList.remove("hide");
+  if (score < 2) {
+    cletusDiv.classList.remove("hide");
+  } else if (score < 4) {
+    barneyDiv.classList.remove("hide");
+  } else if (score < 6) {
+    homerDiv.classList.remove("hide");
+  } else if (score < 8) {
+    lennyDiv.classList.remove("hide");
+  } else if (score < 10) {
+    margeDiv.classList.remove("hide");
   } else {
-    lisaDiv.classList.remove("hide");
+    frinkDiv.classList.remove("hide");
   }
 };
 //axios
@@ -205,7 +217,7 @@ const showQuestionHard = (question) => {
     }
     button.addEventListener("click", () => {
       if (button.dataset.correct === "true") {
-        score = +2; 
+        score++ ; 
         printScore(score);
       }
       selectAnswerHard();
@@ -263,6 +275,7 @@ const selectAnswerHard = () => {
 
 const resetState = () => {
   nextButton.classList.add("hide");
+  nextButtonHard.classList.add("hide")
   answerButtonsElement.innerHTML = "";
 };
 

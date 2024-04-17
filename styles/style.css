@@ -118,9 +118,28 @@ button {
   margin-top: 130px;
 }
 
+.nameResultAdult {
+  color: #4b0081;
+  margin-top: 60px;
+}
+
 .imageResult {
   /*max-height: 380px; */
   max-height: 300px;
+}
+
+.imageResultAdult {
+  max-height: 380px; 
+}
+
+.nameResultHomer {
+  color: #4b0081;
+  margin-top: 122px;
+}
+
+
+.imageResultHomer {
+max-width: 380px;
 }
 
 .controlAudio {
