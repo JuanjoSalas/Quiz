@@ -61,14 +61,25 @@ background-color: #af69cd;
 }
 
 .speaker {
-  background-color: #4b0081;
+  background-color: #6b7787;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   width: 150px;
   height: 300px;
   border-radius: 5%;
   margin-top: 50px;
-  padding: 40px 0;
+  padding: 5px 0;
   text-align: center;
   color: white;
+}
+
+.speakerTexture {
+  background-color: #4b0081;
+  width: 10px;
+  height: 265px;
+  margin: 15px;
+
 }
 
 #home {
@@ -84,8 +95,11 @@ background-color: #af69cd;
 }
 
 #quiz {
-  background-image: url(../assets/sofa.jpg);
+  padding-top: 45px;
+  /*background-image: url(../assets/pizarra.jpg);*/
+  background-image: url(../assets/fondo.jpg);
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 100%;
   width: 1200px;
   height: 620px;
@@ -96,8 +110,28 @@ background-color: #af69cd;
   text-align: center;
 }
 
+.scorePrint {
+  margin: 15px;
+  color: red;
+}
+
+.questionImage {
+  min-height: 250px;
+  max-height: 250px;
+}
+
+.quote {
+  margin-top: 55px;
+  margin-left: 55px;
+  max-width: 900px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 button {
-  
+  padding: 10px;
+  margin: 25px 10px;
+  border-radius: 10px;
 }
 
 #results {

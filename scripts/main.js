@@ -132,7 +132,7 @@ const startGameHard = () => {
 };
 
 const printScore = (score) => {
-  scoreMarker.innerHTML = `<h5>Score: ${score}</h5>`;
+  scoreMarker.innerHTML = `<h5 class="scorePrint">Score: ${score}</h5>`;
   let end = score;
 }
 
@@ -151,7 +151,7 @@ const showQuestion = (question) => {
   if (arrbtnFiltered.length < 10) {
     loadQuestion();
   }
-  questionElement.innerHTML = `<img src="${question[currentQuestionIndex].image}" alt=""></img>`;
+  questionElement.innerHTML = `<img src="${question[currentQuestionIndex].image}" class="questionImage" alt=""></img>`;
   correctAnswer = question[currentQuestionIndex].character;
   const arrSort = arrbtnFiltered.filter((answer, i) => {
     if (answer == correctAnswer) {
@@ -198,7 +198,7 @@ const showQuestionHard = (question) => {
     loadQuestion();
   }
 
-  questionElement.innerHTML = `<h5>${question[currentQuestionIndex].quote}</h5>`;
+  questionElement.innerHTML = `<div class="quote"><h5>${question[currentQuestionIndex].quote}</h5></div>`;
   correctAnswer = question[currentQuestionIndex].character;
   const arrSort = arrbtnFiltered.filter((answer, i) => {
     if (answer == correctAnswer) {
