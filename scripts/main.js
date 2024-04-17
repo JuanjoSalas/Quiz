@@ -31,7 +31,6 @@ let currentQuestionIndex;
 let arrbtn = [];
 let score = 0;
 // Fuctions
-// Body
 const hideViews = () => {
   homeDiv.classList.add("hide");
   quizDiv.classList.add("hide");
@@ -69,6 +68,23 @@ const showResults = () => {
   }
 };
 
+const showResultsHard = () => {
+  hideViews();
+  resultsDiv.classList.remove("hide");
+  if (score < 3) {
+    ralphDiv.classList.remove("hide");
+  } else if (score < 7) {
+    nelsonDiv.classList.remove("hide");
+  } else if (score < 11) {
+    bartDiv.classList.remove("hide");
+  } else if (score < 15) {
+    milhouseDiv.classList.remove("hide");
+  } else if (score < 18) {
+    martinDiv.classList.remove("hide");
+  } else {
+    lisaDiv.classList.remove("hide");
+  }
+};
 //axios
 const loadQuestion = async () => {
   try {
@@ -86,6 +102,7 @@ loadQuestion();
 const startGame = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
+  score = 0; 
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   scoreMarker.classList.remove("hide");
@@ -98,6 +115,7 @@ const startGameHard = () => {
   score = 0;
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
+  scoreMarker.classList.remove("hide");
   setNextQuestionHard();
 };
 
@@ -187,10 +205,10 @@ const showQuestionHard = (question) => {
     }
     button.addEventListener("click", () => {
       if (button.dataset.correct === "true") {
-        score++;
+        score = +2; 
         printScore(score);
       }
-      selectAnswer();
+      selectAnswerHard();
     });
     
     answerButtonsElement.appendChild(button);
@@ -236,7 +254,7 @@ const selectAnswerHard = () => {
   if (10 > currentQuestionIndex + 1) {
     nextButtonHard.classList.remove("hide");
   } else {
-    showResults();
+    showResultsHard();
     startHardButton.innerText = "restart";
     startButton.classList.remove("hide");
     startHardButton.classList.remove("hide");

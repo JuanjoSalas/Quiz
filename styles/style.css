@@ -26,9 +26,16 @@ background-color: #af69cd;
   padding: 25px;
 }
 
-.textButton {
+.textButtonHome {
   background-color: #6b7787;
-  padding: 5px 25px;
+  padding: 5px 28px;
+  border-radius: 10%;
+}
+
+.textButtonQuiz {
+  background-color: #6b7787;
+  padding: 5px 32px;
+  border-radius: 10%;
 }
 
 .buttonHome {
@@ -89,6 +96,10 @@ background-color: #af69cd;
   text-align: center;
 }
 
+button {
+  
+}
+
 #results {
   background-image: url(../assets/sofa.jpg);
   width: 1200px;
@@ -99,6 +110,17 @@ background-color: #af69cd;
   color: yellow;
   text-align: center;
   padding: 30px 0 0 0;
+}
+
+.nameResult {
+  color: #4b0081;
+  /*margin-top: 60px;*/
+  margin-top: 130px;
+}
+
+.imageResult {
+  /*max-height: 380px; */
+  max-height: 300px;
 }
 
 .controlAudio {
