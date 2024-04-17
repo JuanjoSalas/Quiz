@@ -95,6 +95,7 @@ const startGame = () => {
 const startGameHard = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
+  score = 0;
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   setNextQuestionHard();
@@ -137,17 +138,12 @@ const showQuestion = (question) => {
     if (answer == correctAnswer) {
       button.dataset.correct = true;
     }
-    //button.addEventListener("click", selectAnswer);
 
     button.addEventListener("click", () => {
       if (button.dataset.correct === "true") {
         score++;
         printScore(score);
       }
-
-      console.log("button", button);
-      console.log("score", score);
-
       selectAnswer();
     });
     
@@ -189,8 +185,14 @@ const showQuestionHard = (question) => {
     if (answer == correctAnswer) {
       button.dataset.correct = true;
     }
-    button.addEventListener("click", selectAnswerHard);
-
+    button.addEventListener("click", () => {
+      if (button.dataset.correct === "true") {
+        score++;
+        printScore(score);
+      }
+      selectAnswer();
+    });
+    
     answerButtonsElement.appendChild(button);
   });
 };
