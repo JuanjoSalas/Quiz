@@ -16,6 +16,7 @@ const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const scoreMarker = document.getElementById("score-marker");
+//const audioTrue = document.getElementById("audio-true"); // Prueba audio
 // Result
 const ralphDiv = document.getElementById("ralph");
 const nelsonDiv = document.getElementById("nelson");
@@ -53,6 +54,7 @@ const hideViews = () => {
   lennyDiv.classList.add("hide");
   margeDiv.classList.add("hide");
   frinkDiv.classList.add("hide");
+  //audioTrue.classList.add("hide");
 };
 const showHome = () => {
   hideViews();
@@ -172,6 +174,7 @@ const showQuestion = (question) => {
     button.addEventListener("click", () => {
       if (button.dataset.correct === "true") {
         score++;
+        //audioTrue.classList.remove("hide"); //Prueba audio
         printScore(score);
       }
       selectAnswer();
@@ -218,6 +221,7 @@ const showQuestionHard = (question) => {
     button.addEventListener("click", () => {
       if (button.dataset.correct === "true") {
         score++ ; 
+        //audioTrue.classList.remove("hide"); //Prueba audio
         printScore(score);
       }
       selectAnswerHard();
@@ -228,6 +232,7 @@ const showQuestionHard = (question) => {
 };
 
 const setNextQuestion = () => {
+  //audioTrue.classList.add("hide");
   resetState();
   showQuestion(questions);
 };
@@ -256,6 +261,8 @@ const selectAnswer = () => {
     startButton.innerText = "restart";
     startHardButton.classList.remove("hide");
     startButton.classList.remove("hide");
+    questionContainerElement.classList.add("hide");
+    scoreMarker.classList.add("hide"); 
   }
 };
 
@@ -270,6 +277,8 @@ const selectAnswerHard = () => {
     startHardButton.innerText = "restart";
     startButton.classList.remove("hide");
     startHardButton.classList.remove("hide");
+    questionContainerElement.classList.add("hide"); 
+    scoreMarker.classList.add("hide"); 
   }
 };
 
