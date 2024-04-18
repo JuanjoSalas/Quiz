@@ -109,6 +109,10 @@ background-color: #af69cd;
   text-align: center;
 }
 
+#audio-true {
+  display: none
+  }
+
 .scorePrint {
   margin: 15px;
   color: red;

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
     <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/Donut.ico" type="image/x-icon">
     <title>The Simpsons Quiz</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <div class="border">
             <div id="home">
                 <h1>The<br>Simpsons</h1>
-                <audio src="./assets/theme.mp3" controls class="controlAudio"></audio>
+                <audio src="./assets/theme.mp3" autoplay controls class="controlAudio"></audio>
             </div>
             <div id="quiz" class="hide">
                 <h2>Quiz</h2>
@@ -28,7 +28,9 @@
                     <button id="next-btn" class="hide">Next</button>
                     <button id="next-btn-hard" class="hide">Next</button>
                 </div>
-                <!--<audio class="audio-true" autoplay></audio>-->
+                <audio id="audio-true" controls>
+                    <source type="audio/mp3" src="./assets/truesound.mp3">
+                </audio>
             </div>
             <div id="results" class="hide">
                 <h2>What character are you?</h2>
