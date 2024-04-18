@@ -117,6 +117,7 @@ const startGame = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
   score = 0; 
+  scoreMarker.innerHTML = "";
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   scoreMarker.classList.remove("hide");
@@ -128,6 +129,7 @@ const startGameHard = () => {
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
   score = 0;
+  scoreMarker.innerHTML = "";
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   scoreMarker.classList.remove("hide");
