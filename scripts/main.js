@@ -124,6 +124,7 @@ const startGame = () => {
 };
 
 const startGameHard = () => {
+  quizDiv.style.backgroundImage = "url(../assets/pizarra.jpg)";
   startButton.classList.add("hide");
   startHardButton.classList.add("hide");
   score = 0;
@@ -258,7 +259,7 @@ const selectAnswer = () => {
     nextButton.classList.remove("hide");
   } else {
     showResults();
-    startButton.innerText = "restart";
+    //startButton.innerText = "restart";
     startHardButton.classList.remove("hide");
     startButton.classList.remove("hide");
     questionContainerElement.classList.add("hide");
@@ -274,7 +275,8 @@ const selectAnswerHard = () => {
     nextButtonHard.classList.remove("hide");
   } else {
     showResultsHard();
-    startHardButton.innerText = "restart";
+    quizDiv.style.backgroundImage = null;
+    //startHardButton.innerText = "restart";
     startButton.classList.remove("hide");
     startHardButton.classList.remove("hide");
     questionContainerElement.classList.add("hide"); 
